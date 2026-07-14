@@ -51,29 +51,29 @@ The project is built like a real product, not a notebook demo: typed API contrac
 ## 🏗 Architecture
 
 ```
-                         ┌─────────────────────┐
-                         │      Next.js UI      │
-                         │  (Summarize / Risks   │
-                         │      / Q&A tabs)      │
-                         └──────────┬───────────┘
-                                    │  REST (multipart/form-data)
-                                    ▼
-                         ┌─────────────────────┐
-                         │     FastAPI Backend  │
-                         │  ─────────────────── │
-                         │  • PDF text extraction│
-                         │  • OCR fallback        │
-                         │  • Chunking            │
-                         │  • Caching / rate limit│
-                         │  • Prometheus metrics  │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │  Vertex AI (Gemini)  │
-                         │  with model fallback  │
-                         │  chain for resilience │
-                         └─────────────────────┘
+          ┌─────────────────────────┐
+          │       Next.js UI        │
+          │   (Summarize / Risks    │
+          │       / Q&A tabs)       │
+          └─────────────────────────┘
+                       │  REST (multipart/form-data)
+                       ▼
+          ┌─────────────────────────┐
+          │     FastAPI Backend     │
+          │     ───────────────     │
+          │  • PDF text extraction  │
+          │     • OCR fallback      │
+          │       • Chunking        │
+          │ • Caching / rate limit  │
+          │  • Prometheus metrics   │
+          └─────────────────────────┘
+                       │
+                       ▼
+          ┌─────────────────────────┐
+          │   Vertex AI (Gemini)    │
+          │   with model fallback   │
+          │  chain for resilience   │
+          └─────────────────────────┘
 ```
 
 **Design highlights:**
