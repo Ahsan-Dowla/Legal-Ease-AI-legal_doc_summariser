@@ -1,10 +1,11 @@
+from dotenv import load_dotenv
 from groq import Groq
 import os
 from typing import List
 
+load_dotenv()   # <-- this line is important
+
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
-
 def groq_chat(prompt: str, model: str | None = None, system: str | None = None) -> str:
     """Send a chat completion request to Groq and return the assistant's reply.
 
