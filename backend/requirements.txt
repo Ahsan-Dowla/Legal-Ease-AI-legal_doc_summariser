@@ -10,3 +10,4 @@ google-cloud-aiplatform
 pdf2image
 pillow
 pytesseract
+groq
