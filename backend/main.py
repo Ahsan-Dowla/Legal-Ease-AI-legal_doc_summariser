@@ -39,11 +39,13 @@ extra_origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if 
 allowed_origins = sorted(set([frontend_origin, "http://localhost:3000", "http://127.0.0.1:3000"] + extra_origins))
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=[
+        "http://localhost:3000",
+        "https://legal-ease-ai-legal-doc-summariser.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["*"],
 )
 
 # Config
