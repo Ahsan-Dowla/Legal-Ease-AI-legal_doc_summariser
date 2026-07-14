@@ -31,8 +31,10 @@ export default function PdfViewer({ fileUrl, highlightTerms = [] }: Props) {
       <Document file={fileUrl} onLoadSuccess={(info) => setNumPages(info.numPages)}>
         {Array.from(new Array(numPages || 0), (_el, index) => (
           <div key={`pg_${index + 1}`} className="border-b">
-            <Page pageNumber={index + 1} width={800} customTextRenderer={highlightRegex ? renderWithHighlights(highlightRegex) : undefined} />
-          </div>
+<Page
+  pageNumber={index + 1}
+  width={800}
+/>          </div>
         ))}
       </Document>
     </div>
